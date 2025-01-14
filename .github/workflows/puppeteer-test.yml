@@ -54,6 +54,7 @@ jobs:
       # Step to run the Puppeteer tests
       - name: Run Puppeteer tests
         env:
+          WEBSOCKET_UR: ${{ WEBSOCKET_URL}}
           USERNAME1: ${{ secrets.USERNAME1 }}
           PASSWORD: ${{ secrets.PASSWORD }}
           PIN: ${{ secrets.PIN }}

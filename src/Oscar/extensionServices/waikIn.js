@@ -5,7 +5,7 @@ const { editDectection, generateSoapNote } = require('../utils/helper');
 async function walkinFunction(page, name, number, selector) {
     console.log('Executed walk-in action...');
     await waitAndClick(page, selector);
-    const ws = new WebSocket('wss://api.aiscribe.quipohealth.com/ws'); //web socket connection url
+    const ws = new WebSocket(process.env.WEBSOCKET_URL); //web socket connection url
     await new Promise((resolve, reject) => {
       ws.on('open', () => {
         console.log('WebSocket connected');
@@ -45,7 +45,7 @@ async function walkinFunction(page, name, number, selector) {
     await new Promise(resolve => setTimeout(resolve, 10000));
     await editDectection(page);
     await generateSoapNote(page);
-    await new Promise(resolve => setTimeout(resolve, 500000));
+    await new Promise(resolve => setTimeout(resolve, 5000));
   }
 
   module.exports = { walkinFunction };
