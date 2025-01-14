@@ -18,8 +18,8 @@ async function launchExtesion(page, name, number, selector){
     const passwordField = await page.$('input#password');
     if (usernameField && passwordField) {
         console.log('Login fields detected. Filling credentials.');
-        await waitAndType(page, '#username', 'aaronrahul2k03@gmail.com');
-        await waitAndType(page, '#password', 'Rahul@123');
+        await waitAndType(page, '#username', process.env.QUIPO_USERNAME);
+        await waitAndType(page, '#password', process.env.QUIPO_PASSWORD);
         await waitAndClick(page, 'button#loginBtn');
         console.log('Login successful. Checking extension data...');
     }

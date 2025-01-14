@@ -60,6 +60,8 @@ jobs:
           TARGET_DATE: ${{ env.TARGET_DATE }}
           HEADLESS: ${{ secrets.HEADLESS }} # Reference the TARGET_DATE variable
           WEBSOCKET_URL: ${{ secrets.WEBSOCKET_URL}}
+          QUIPO_USERNAME: ${{ secrets.QUIPO_USERNAME }}
+          QUIPO_PASSWORD: ${{ secrets.QUIPO_PASSWORD }}
         run: |
           set -e  # Stop the script on error
           node src/Oscar/main.js  # Specify your Puppeteer test file
