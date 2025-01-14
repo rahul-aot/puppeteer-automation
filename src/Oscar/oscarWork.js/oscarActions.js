@@ -38,7 +38,7 @@ async function handleActions(page) {
 
 async function walkinFunction(page,name,number,selector) {
   console.log('Executed walk-in action...');
-  await waitAndClick(page, selector);
+  // await waitAndClick(page, selector);
   // const ws = new WebSocket(''); //web socket connection url
   // await new Promise((resolve, reject) => {
   //   ws.on('open', () => {

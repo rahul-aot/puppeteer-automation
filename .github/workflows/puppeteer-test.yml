@@ -57,7 +57,8 @@ jobs:
           USERNAME1: ${{ secrets.USERNAME1 }}
           PASSWORD: ${{ secrets.PASSWORD }}
           PIN: ${{ secrets.PIN }}
-          TARGET_DATE: ${{ env.TARGET_DATE }}  # Reference the TARGET_DATE variable
+          TARGET_DATE: ${{ env.TARGET_DATE }}
+          HEADLESS: ${{ secrets.HEADLESS }} # Reference the TARGET_DATE variable
         run: |
           set -e  # Stop the script on error
           node src/Oscar/main.js  # Specify your Puppeteer test file

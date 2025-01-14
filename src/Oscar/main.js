@@ -7,8 +7,9 @@ const { waitAndClick } = require('./utils/utils');
 
 (async () => {
   const extensionPath = process.env.EXTENSION_PATH || './src/extensions/build';
+  const audioPath = process.env.AUDIO_PATH || './src/extensions/test.wav';
   // const head= process.env.HEADLESS || 'false';
-  const head= false;
+  const head= process.env.HEADLESS === 'true';;
   const credentials = {
     username: process.env.USERNAME1,
     password: process.env.PASSWORD,
