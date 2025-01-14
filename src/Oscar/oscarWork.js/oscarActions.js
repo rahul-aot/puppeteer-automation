@@ -1,7 +1,9 @@
 // oscarActions.js
-const { navigateToUrl, waitForNavigation, waitAndCheck, waitAndClick } = require('../utils/utils');
-const { checkExtensionData, launchExtesion} = require('../utils/helper');
-const WebSocket = require('ws');
+const { navigateToUrl, waitForNavigation, waitAndCheck} = require('../utils/utils');
+const {launchExtesion } = require('../utils/helper');
+const { walkinFunction } = require('../extensionServices/waikIn');
+const { videoFunction } = require('../extensionServices/videoCall');
+const { voiceCallFunction } = require('../extensionServices/voiceCall');
 
 async function findAppointment(page) {
   await waitAndCheck(page, '#mygroup_no');
@@ -20,15 +22,15 @@ async function handleActions(page) {
 
   const selectors = [
     { pname: "Joe,Ashik", number: " (613) 454-6546 | ", selector: "img[src='../images/walkin.png']", name: "Walkin", action: walkinFunction },
-    { pname: "Krishna,Abhinav", number: " (613) 454-6546 | ", selector: "img[alt='Video Call Icon']", name: "Video", action: videoFunction},
+    { pname: "Krishna,Abhinav", number: " (613) 454-6546 | ", selector: "img[alt='Video Call Icon']", name: "Video", action: videoFunction },
     { pname: "Thomas,Priya", number: " (613) 456-0988 | ", selector: "img[src='https://oscaremr.quipohealth.com/oscar/images/audio.png']", name: "Voice", action: voiceCallFunction }
   ];
-  
+
   for (const item of selectors) {
     const element = await page.$(item.selector);
     const visible = !!element;
     console.log(`${item.name} element is ${visible ? 'available' : 'not available'} on the page.`);
-    if (visible){
+    if (visible) {
       await launchExtesion(page, item.pname, item.number, item.selector);
       await item.action(page, item.pname, item.number, item.selector);
     }
@@ -36,49 +38,6 @@ async function handleActions(page) {
 }
 
 
-async function walkinFunction(page,name,number,selector) {
-  console.log('Executed walk-in action...');
-  // await waitAndClick(page, selector);
-  // const ws = new WebSocket(''); //web socket connection url
-  // await new Promise((resolve, reject) => {
-  //   ws.on('open', () => {
-  //     console.log('WebSocket connected');
-  //     resolve();
-  //   });
-  //   ws.on('error', (err) => {
-  //     console.error('WebSocket error:', err);
-  //     reject(err);
-  //   });
-  // });
-  // await new Promise(resolve => setTimeout(resolve, 5000));
-  // await waitAndClick(page, 'button#clinic-recording-button');
-  // console.log('Clicked on clinic-recording-button');
-  // const dataToSend = {
-  //   name: name,
-  //   number: number,
-  //   action: 'recordingStarted',
-  //   timestamp: new Date().toISOString()
-  // };
-  // ws.send(JSON.stringify(dataToSend));
-  // console.log('Data sent to WebSocket:', dataToSend);
-  // ws.on('message', (message) => {
-  //   console.log('Received message from WebSocket server:', message);
-  // });
-  // ws.on('close', () => {
-  //   console.log('WebSocket connection closed');
-  // });
-  // await new Promise(resolve => setTimeout(resolve, 500000));
-  // ws.close();
-}
-
-
-async function voiceCallFunction(page,name,number,selector) {
-  console.log('Executing voice call action...');
-}
-
-async function videoFunction(page,name,number,selector) {
-  console.log('Executing video call action...');
-}
 
 module.exports = { findAppointment };
 
