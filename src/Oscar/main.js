@@ -16,7 +16,7 @@ const { waitAndClick } = require('./utils/utils');
     pin: process.env.PIN,
   };
 
-  const browser = await launchBrowser(extensionPath,head);
+  const browser = await launchBrowser(extensionPath,head, audioPath);
 
   console.log('launched ' + head);
 

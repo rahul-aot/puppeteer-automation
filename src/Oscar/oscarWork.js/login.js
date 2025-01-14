@@ -2,7 +2,7 @@
 const puppeteer = require('puppeteer');
 const { waitAndType, waitAndClick, waitForNavigation, navigateToUrl } = require('../utils/utils');  // Import navigateToUrl
 
-async function launchBrowser(extensionPath, head) {
+async function launchBrowser(extensionPath, head, audioPath) {
     return await puppeteer.launch({
         headless: head,
         timeout: 1200000,
@@ -16,7 +16,7 @@ async function launchBrowser(extensionPath, head) {
             '--disable-infobars',
             '--use-fake-ui-for-media-stream', // Automatically allow media permissions
             '--use-fake-device-for-media-stream',
-            '--use-file-for-fake-audio-capture=./src/extensions/test.wav'
+            `--use-file-for-fake-audio-capture=${audioPath}`,
         ],
     });
 }
