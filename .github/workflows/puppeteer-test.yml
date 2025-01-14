@@ -54,12 +54,12 @@ jobs:
       # Step to run the Puppeteer tests
       - name: Run Puppeteer tests
         env:
-          WEBSOCKET_UR: ${{ WEBSOCKET_URL}}
           USERNAME1: ${{ secrets.USERNAME1 }}
           PASSWORD: ${{ secrets.PASSWORD }}
           PIN: ${{ secrets.PIN }}
           TARGET_DATE: ${{ env.TARGET_DATE }}
           HEADLESS: ${{ secrets.HEADLESS }} # Reference the TARGET_DATE variable
+          WEBSOCKET_URL: ${{ secrets.WEBSOCKET_URL}}
         run: |
           set -e  # Stop the script on error
           node src/Oscar/main.js  # Specify your Puppeteer test file
