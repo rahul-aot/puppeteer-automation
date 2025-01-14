@@ -45,7 +45,7 @@ async function voiceCallFunction(page, name, number, selector) {
     await waitAndClick(page,'button[aria-label="End Call"]');
     await new Promise(resolve => setTimeout(resolve, 5000));
     await editDectection(page);
-    await generateSoapNote(page);
+    await generateSoapNote(page)
     await new Promise(resolve => setTimeout(resolve, 500000));
   }
 
