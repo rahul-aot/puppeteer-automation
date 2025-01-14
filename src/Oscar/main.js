@@ -19,45 +19,6 @@ const { waitAndClick } = require('./utils/utils');
   const browser = await launchBrowser(extensionPath,head, audioPath);
 
   console.log('launched ' + head);
-
-  // browser.on('targetcreated', async target => {
-  //   try {
-  //     const newPage = await target.page();
-  //     if (newPage) {
-  //       const url = newPage.url();
-  //       console.log(`New page detected: ${url}`);
-  
-  //       // Check if the new page is the extension permissions tab
-  //       if (url.includes('chrome-extension://') && url.includes('offScreen.html')) {
-  //         console.log('Extension permissions page detected.');
-
-  //         waitAndClick(newPage,"#requestPermissions");
-  
-  //         // Handle the browser dialog
-  //         newPage.on('dialog', async dialog => {
-  //           console.log(`Dialog detected: ${dialog.message()}`);
-  //           if (dialog.message().includes("allow this time")) {
-  //             await dialog.accept(); // Accepts the "allow this time" option
-  //             console.log('Selected "Allow this time".');
-  //           } else {
-  //             await dialog.dismiss(); // Dismiss any other dialogs
-  //             console.log('Dialog dismissed.');
-  //           }
-  //         });
-  
-  //         // Wait for the dialog to be handled
-  //         await newPage.waitForTimeout(2000); // Adjust if needed
-  
-  //         // Close the permissions tab
-  //         await newPage.close();
-  //         console.log('Permissions tab closed.');
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error('Error handling the new tab:', error);
-  //   }
-  // });
-  
   
   // Attach a global dialog handler for any new pages that open
   browser.on('targetcreated', async target => {

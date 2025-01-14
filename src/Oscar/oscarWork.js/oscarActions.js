@@ -12,7 +12,7 @@ async function findAppointment(page) {
 
   await waitForNavigation(page);
 
-  const targetUrl = 'https://oscaremr.quipohealth.com/oscar/provider/providercontrol.jsp?year=2024&month=11&day=11&view=0&displaymode=day&dboperation=searchappointmentday&viewall=1';
+  const targetUrl = 'https://oscaremr.quipohealth.com/oscar/provider/providercontrol.jsp?year=2025&month=1&day=16&view=0&displaymode=day&dboperation=searchappointmentday&viewall=0';
   await navigateToUrl(page, targetUrl);
 
   await handleActions(page);
